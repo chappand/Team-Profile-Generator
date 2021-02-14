@@ -16,5 +16,16 @@ class Employee {
         function getRole() {
             return "Employee";
         };
-    }
-}
+        getName();
+
+        getId();
+
+        getEmail();
+
+        getRole();
+    };
+};
+
+
+
+module.exports = Employee;
