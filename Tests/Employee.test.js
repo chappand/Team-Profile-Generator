@@ -14,12 +14,4 @@ describe("Employee", () => {
             expect(getRole()).toEqual("Employee");
         });
     });
-
-    describe("name", () => {
-        it("New Employee should have the same name that is passed in", () => {
-            const emp = new Employee("Andrew", 1111, "x@x.com");
-
-            expect(Employee.name).toEqual("Andrew");
-        });
-    });
 });
