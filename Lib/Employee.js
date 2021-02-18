@@ -3,26 +3,18 @@ class Employee {
         this.name = name;
         this.id = id;
         this.email = email;
-
-        function getName() {
-            return name;
-        };
-        function getId() {
-            return id;
-        };
-        function getEmail() {
-            return email;
-        };
-        function getRole() {
-            return "Employee";
-        };
-        getName();
-
-        getId();
-
-        getEmail();
-
-        getRole();
+    };
+    getName() {
+        return this.name;
+    };
+    getId() {
+        return this.id;
+    };
+    getEmail() {
+        return this.email;
+    };
+    getRole() {
+        return "Employee";
     };
 };
 

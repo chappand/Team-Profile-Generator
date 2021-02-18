@@ -13,7 +13,7 @@ describe("Manager", () => {
             expect(Manager.id !== null).toEqual(true);
             expect(Manager.email !== null).toEqual(true);
             expect(Manager.officeNumber !== null).toEqual(true);
-            expect(getRole()).toEqual("Engineer");
+            expect(getRole()).toEqual("Manager");
         });
     });
 });
