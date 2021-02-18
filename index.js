@@ -8,9 +8,6 @@ const Manager = require('./Lib/Manager.js');
 
 let people = [];
 
-// const manager = new Manager(answers.officeNumber, answers.name, answers.id, answers.email)
-
-//people.push(manager);
 
 // for (i=0, i < people.length, i++) {
 //     if (people[i].getRole() === "Manager") {
@@ -137,13 +134,19 @@ const promptUser = () => {
                 pick();
             })
         };
+        
+        function end() {
+            fs.writeFile('company.html', generateHTML(userInput), (err) => {
+                    if (err) {
+                        console.log("There was an error, please try again!");
+                    } else {
+                        console.log('Successfully created Readme!');
+                    }
+                });
+        };
 
+    };
 
-            break;
-            case "End": prompts.complete;
-            break;
-    }
-}
 // TODO: Create a function to write HTML
 const generateHTML = () =>
 `<!DOCTYPE html>
@@ -171,10 +174,4 @@ const generateHTML = () =>
 
 // Function call to initialize app
 promptUser();
-    // .then((userInput) => fs.writeFile('README.md', generateReadme(userInput), (err) => {
-    //     if (err) {
-    //         console.log("There was an error, please try again!");
-    //     } else {
-    //         console.log('Successfully created Readme!');
-    //     }
-    // }));
+
