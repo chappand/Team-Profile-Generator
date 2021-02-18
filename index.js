@@ -63,9 +63,11 @@ const promptUser = () => {
                 case "Engineer": 
                 engineer();
                     break;
-            
-                default:
+                case "Intern": 
+                intern();
                     break;
+                case "End": 
+                end();
             }
         })
     }
@@ -80,6 +82,9 @@ const promptUser = () => {
     // })
 
     
+
+
+
         function engineer(){inquirer.prompt([
         {
             type: 'input',
@@ -101,13 +106,12 @@ const promptUser = () => {
             name: 'github',
             message: 'What is the Engineer GitHub?',
         }]).then(answers => {
-            const engineer = new Engineer(answers.officeNumber, answers.name, answers.id, answers.email);
+            const engineer = new Engineer(answers.github, answers.name, answers.id, answers.email);
             people.push(engineer);
             pick();
         })
     }
-        break;
-        case "Intern": inquirer.prompt([
+        function intern() {inquirer.prompt([
             {
                 type: 'input',
                 name: 'Name',
@@ -127,58 +131,43 @@ const promptUser = () => {
                 type: 'input',
                 name: 'school',
                 message: 'What school did the Intern go to?',
-            },
-            {
-                type: 'list',
-                name: 'typeOfEmployee',
-                message: 'Please select a role of an employee to add, or end process.',
-                choices: ["Engineer","Intern","End"]
-            }])
+            }]).then(answers => {
+                const intern = new Intern(answers.school, answers.name, answers.id, answers.email);
+                people.push(intern);
+                pick();
+            })
+        };
+
+
             break;
             case "End": prompts.complete;
             break;
     }
 }
 // TODO: Create a function to write HTML
-// const generateHTML = (userInput) =>
-//     `# ${userInput.title}
-
-// ## Description
-
-// ${userInput.description}
-
-// ## Table of Contents
-
-// * [Installation](#installation)
-// * [Usage](#usage)
-// * [License](#license)
-// * [Contributing](#contributing)
-// * [Tests](#tests)
-// * [Questions](#questions)
-
-// ## Installation
-
-// ${userInput.installation}
-
-// ## Usage
-
-// ${userInput.usage}
-
-// ## License
-
-// ## Contributing
-
-// ${userInput.contributing}
-
-// ## Tests
-
-// ${userInput.tests}
-
-// ## Questions
-
-// Here is the link to my GitHub: [${userInput.githubUN}](${userInput.githubLink})
-
-// If you have any further questions, please reach out to me via email at: ${userInput.email}`;
+const generateHTML = () =>
+`<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="Dist/style.css">
+<title>Title</title>
+</head>
+<body>
+    <div>
+        
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>`;
 
 // Function call to initialize app
 promptUser();
