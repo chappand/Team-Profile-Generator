@@ -8,15 +8,52 @@ const Manager = require('./Lib/Manager.js');
 
 let people = [];
 
-
-// for (i=0, i < people.length, i++) {
-//     if (people[i].getRole() === "Manager") {
-//         create manager card and append
-//     } 
-//         if (people[i].getRole() === "Intern") {
-//             create intern card and append }
-// // }
-
+function divs() {
+for (i=0; i < people.length; i++) {
+    if (people[i].getRole() === "Manager") {
+        let theDiv = document.getElementById("div");
+        theDiv.innerHTML += `<div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h1>${answers.name}</h1>
+          <h2>"Manager"</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">"ID:"${answers.id}</li>
+          <li class="list-group-item">"Email:"${answers.email}</li>
+          <li class="list-group-item">"Office Number:"${answers.officeNumber}</li>
+        </ul>
+      </div>`; 
+    } ;
+    if (people[i].getRole() === "Intern") {
+        let theDiv = document.getElementById("div");
+        theDiv.innerHTML += `<div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h1>${answers.name}</h1>
+          <h2>"Intern"</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">"ID:"${answers.id}</li>
+          <li class="list-group-item">"Email:"${answers.email}</li>
+          <li class="list-group-item">"School:"${answers.school}</li>
+        </ul>
+      </div>`; 
+    };
+    if (people[i].getRole() === "Engineer") {
+        let theDiv = document.getElementById("div");
+        theDiv.innerHTML += `<div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h1>${answers.name}</h1>
+          <h2>"Engineer"</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">"ID:"${answers.id}</li>
+          <li class="list-group-item">"Email:"${answers.email}</li>
+          <li class="list-group-item">"School:"${answers.github}</li>
+        </ul>
+      </div>`; 
+    };
+};
+};
 
 // TODO: Create an array of questions for user input
 const promptUser = () => {
@@ -47,6 +84,7 @@ const promptUser = () => {
             pick();
         }) 
 
+// Function to take what they pick for the last answer and show a set of questions or generate html file.
     function pick(){
 
         inquirer.prompt([{
@@ -68,20 +106,8 @@ const promptUser = () => {
             }
         })
     }
-  
 
-    // inquirer.prompt([], function(answers){
-    //     answers.whatever
-    // })
-// Function out other questions and put it in callback function
-    // inquirer.prompt([]).then(answers => {
-    //     answers.whatever
-    // })
-
-    
-
-
-
+// Functions that hold the questions for each of the types of employees
         function engineer(){inquirer.prompt([
         {
             type: 'input',
@@ -136,11 +162,11 @@ const promptUser = () => {
         };
         
         function end() {
-            fs.writeFile('company.html', generateHTML(userInput), (err) => {
+            fs.writeFile('./Dist/company.html', generateHTML(), (err) => {
                     if (err) {
                         console.log("There was an error, please try again!");
                     } else {
-                        console.log('Successfully created Readme!');
+                        console.log('Successfully created your company directory!');
                     }
                 });
         };
@@ -174,4 +200,4 @@ const generateHTML = () =>
 
 // Function call to initialize app
 promptUser();
-
+divs();
